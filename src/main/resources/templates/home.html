@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>hello Teams</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Tervetuloa Teams!</h1>
+	<table class="table table-striped">
+		<tbody>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Nick Name</th>
+			<th>Age</th>
+			<th>Team</th>
+		</tr>
+			<tr th:each = "player : ${players}">
+				<td th:text="${player.firstName}"></td>
+				<td th:text="${player.lastName}"></td>
+				<td th:text="${player.nickName}"></td>
+				<td th:text="${player.age}"></td>
+				<td th:text="${player.team.name}"></td>
+				<td><a th:href="@{/delete/{id}(id=${player.id})}" class="btn btn-danger">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/add" class="btn btn-success" >Add new team</a>
+
+</body>
