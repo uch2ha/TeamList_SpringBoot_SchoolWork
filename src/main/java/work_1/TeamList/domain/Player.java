@@ -23,12 +23,11 @@ public class Player {
 	
 	public Player() { }
 
-	public Player(String firstName, String lastName, String nickName, String age, Team team) {
+	public Player(String firstName, String lastName, String nickName, Team team) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.nickName = nickName;
-		this.age = age;
 		this.team = team;
 	}
 
@@ -64,13 +63,6 @@ public class Player {
 		this.nickName = nickName;
 	}
 
-	public String getAge() {
-		return age;
-	}
-
-	public void setAge(String age) {
-		this.age = age;
-	}
 
 	public Team getTeam() {
 		return team;

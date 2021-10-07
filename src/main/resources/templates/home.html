@@ -3,12 +3,60 @@
 <head>
 <title>hello Teams</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{style/cssANDjs/home.css}" />
 </head>
 <body>
-	<h1>Tervetuloa Teams!</h1>
-	<table class="table table-striped">
-		<tbody>
+	<a href="/add" class="btn btn-success" >Add new team</a>
+	<div class="main">
+		<div>
+			<div th:each = "game : ${games}" >
+				<p th:text="${game.name}"></p>
+				<div style="display: flex">
+					<ul th:each="team : ${game.teams}">
+						<li th:text="${team.name}"></li>
+						<li th:each = "player : ${team.players}">
+							<small th:text="${player.firstName}"></small>
+							<small th:text="${player.nickName}" ></small>
+							<small th:text="${player.lastName}"></small>							
+						</li>
+					</ul>
+				</div>
+			</div>
+			</div>
+	</div>
+			<!--  
+			<th th:each = "team : ${teams}">
+				<td th:if="${team.game.name == game1.name}">
+					<p th:text=${team.name} style="font-size: 1.1rem"></p>
+					<p th:each = "player : ${team.players}">
+						<span th:text="${player.firstName}"></span>
+						<span th:text="${player.lastName}"></span>
+						<span th:text="${player.nickName}"></span>
+						<span th:text="${player.age}"></span>
+					</p>
+				</td>
+			</th>
+			</tr>
+			-->
+			<!--  
+			<tr>
+				<th>csGo</th>
+			</tr>
+			<tr th:each = "team : ${teams}">
+				<td th:if="${team.game.name == 'Cs:Go'}">
+				
+					<p th:each = "player : ${team.players}">
+						<span th:text="${player.firstName}"></span>
+					</p>
+				
+				
+				
+				</td>
+			
+			</tr>
+		-->
+	
+		<!--  
 		<tr>
 			<th>First Name</th>
 			<th>Last Name</th>
@@ -24,8 +72,9 @@
 				<td th:text="${player.team.name}"></td>
 				<td><a th:href="@{/delete/{id}(id=${player.id})}" class="btn btn-danger">Delete</a></td>
 			</tr>
-		</tbody>
-	</table>
-	<a href="/add" class="btn btn-success" >Add new team</a>
+			-->
+			
+		
+	
 
 </body>

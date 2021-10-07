@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -20,12 +22,17 @@ public class Team {
 		@OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
 		private List<Player> players;
 		
+		@ManyToOne
+		@JoinColumn(name="gameid")
+		private Game game;
+		
 		public Team() { }
 		
 
-		public Team(String name) {
+		public Team(String name, Game game) {
 			super();
 			this.name = name;
+			this.game = game;
 		}
 
 		public long getTeamid() {
@@ -52,6 +59,16 @@ public class Team {
 
 		public void setPlayers(List<Player> players) {
 			this.players = players;
+		}
+
+
+		public Game getGame() {
+			return game;
+		}
+
+
+		public void setGame(Game game) {
+			this.game = game;
 		}
 		
 		
