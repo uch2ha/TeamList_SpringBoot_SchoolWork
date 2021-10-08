@@ -6,22 +6,25 @@
 <link rel="stylesheet" th:href="@{style/cssANDjs/home.css}" />
 </head>
 <body>
-	<a href="/add" class="btn btn-success" >Add new team</a>
+	<header>
+		<a href="/add" class="btn btn-success" >Add new team</a>
+	</header>
 	<div class="main">
-		<div>
-			<div th:each = "game : ${games}" >
+			<div th:each = "game : ${games}" class="game-container">
 				<p th:text="${game.name}"></p>
-				<div style="display: flex">
-					<ul th:each="team : ${game.teams}">
-						<li th:text="${team.name}"></li>
+				<div class="team-container">
+					<ul th:each="team : ${game.teams}" class="team-box">
+						<li th:text="${team.name}" class="team-name"></li>
 						<li th:each = "player : ${team.players}">
-							<small th:text="${player.firstName}"></small>
-							<small th:text="${player.nickName}" ></small>
-							<small th:text="${player.lastName}"></small>							
+							<small th:text="${player.firstName}" class="name"></small>
+							<small th:text="${player.nickName}" class="nick"></small>
+							<small th:text="${player.lastName}" class="name"></small>							
 						</li>
+						<li><a th:href="@{/delete/{id}(id=${team.teamid})}">Delete</a></li>
 					</ul>
+					
+				
 				</div>
-			</div>
 			</div>
 	</div>
 			<!--  

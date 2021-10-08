@@ -58,5 +58,11 @@ public class Game {
 		this.teams = teams;
 	}
 	
+	@Override
+	public String toString() {
+		// Do not insert list attribute students here! Otherwise execution of this method causes an infinite loop. 
+		return "Game [gameid=" + gameid + ", name=" + name + "]";
+	}
+	
 	
 }

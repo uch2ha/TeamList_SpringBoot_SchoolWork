@@ -15,7 +15,7 @@ public class Player {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
-	private String firstName, lastName, nickName, age;
+	private String firstName, lastName, nickName;
 	
 	@ManyToOne
 	@JoinColumn(name="teamid")
