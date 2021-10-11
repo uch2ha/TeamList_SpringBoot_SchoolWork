@@ -23,7 +23,7 @@
 							<a th:href="@{/deleteTeam/{id}(id=${team.teamId})}" class="button"><i class="far fa-trash-alt"></i></a>
 							<a th:href="@{/editTeam/{id}(id=${team.teamId})}" class="button"><i class="far fa-edit"></i></a>
 						</div>
-						<li th:text="${team.name}" class="team-name"></li>
+						<a th:href="${team.webSite}" target="_blank" class="webSiteLink"><li th:text="${team.name}" class="team-name"></li></a>
 						<li th:each = "player : ${team.players}">
 							<small th:text="${player.firstName}" class="name"></small>
 							<small th:text="${player.nickName}" class="nick"></small>

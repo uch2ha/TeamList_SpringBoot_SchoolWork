@@ -17,7 +17,7 @@ public class Team {
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		private long teamId;
-		private String name;
+		private String name, webSite;
 		
 		@OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
 		private List<Player> players;
@@ -29,8 +29,9 @@ public class Team {
 		public Team() { }
 		
 
-		public Team(String name, Game game) {
+		public Team(String name,String webSite, Game game) {
 			super();
+			this.webSite = webSite;
 			this.name = name;
 			this.game = game;
 		}
@@ -70,9 +71,12 @@ public class Team {
 		public void setGame(Game game) {
 			this.game = game;
 		}
-		
-		
-		
-		
-		
+
+		public String getWebSite() {
+			return webSite;
+		}
+
+		public void setWebSite(String webSite) {
+			this.webSite = webSite;
+		}
 }

@@ -34,6 +34,11 @@ input{
     box-shadow: 0 5px 10px rgba(154, 160, 185, 0.1);
     font-size: 1.3rem;
     padding: 1rem;
+    margin-right: 0.5rem;
+}
+
+input:hover{
+    box-shadow: 1px 1px 5px 4px white;
 }
 
 input:focus{
@@ -45,23 +50,27 @@ input:focus{
     border: none;
     border-radius: 10px;
     background-color: white;
-    margin-left: 0.5rem;
     width: 160px;
     box-shadow: 0 5px 10px rgba(154, 160, 185, 0.1);
     font-size: 1rem;
+    outline: 0px;
 }
 
-
-
+.game-select:hover{
+    box-shadow: 1px 1px 5px 4px white;
+}
 
 .btn{
     font-size: 1.5rem;
     margin-left: 0.5rem;
+    margin-right: 0;
     color: black;
 }
 
 .btn:hover{
     background-color: #e150ba;
+    box-shadow: 1px 1px 5px 4px white;
+    color: white;
 }
 
 .btn:active{

@@ -21,6 +21,8 @@ header a{
 
 header a:hover{
 	background-color: #8bf8ea;
+	box-shadow: 1px 1px 5px 4px white;
+	color: #f8f8f8;
 }
 
 header a:active{
@@ -64,7 +66,7 @@ header a:active{
 	text-align: center;
 	justify-content: center;
 	min-width: 21vw;
-	min-height: 26vh;
+	min-height: 22vh;
 	padding: 0;
 	margin-bottom: 1rem;
 
@@ -72,6 +74,10 @@ header a:active{
 
 .team-box-btn{
 	text-align: right;
+}
+
+.webSiteLink{
+	text-decoration: none;
 }
 
 .team-name{

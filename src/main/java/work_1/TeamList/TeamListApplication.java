@@ -33,10 +33,10 @@ public class TeamListApplication {
 			// <--
 			
 			//creating default teams -->
-			Team Secret = new Team("Team Secret", GameRepository.findByName("Dota2").get(0));
-			Team VP_dota = new Team("VP", GameRepository.findByName("Dota2").get(0));
-			Team EG = new Team("Evil Geniuses", GameRepository.findByName("Dota2").get(0));
-			Team IG = new Team("Invictus Gaming", GameRepository.findByName("Dota2").get(0));
+			Team Secret = new Team("Team Secret", "https://teamsecret.gg/", GameRepository.findByName("Dota2").get(0));
+			Team VP_dota = new Team("VP", "https://virtus.pro/en", GameRepository.findByName("Dota2").get(0));
+			Team EG = new Team("Evil Geniuses", "https://evilgeniuses.gg/", GameRepository.findByName("Dota2").get(0));
+			Team IG = new Team("Invictus Gaming", "https://www.igaming.com.cn/", GameRepository.findByName("Dota2").get(0));
 
 			TeamRepository.save(Secret);
 			TeamRepository.save(VP_dota);
@@ -44,17 +44,17 @@ public class TeamListApplication {
 			TeamRepository.save(IG);
 			
 			
-			Team Navi = new Team("Natus Vincere", GameRepository.findByName("Cs:Go").get(0));
-			Team Liquid = new Team("Team Liquid", GameRepository.findByName("Cs:Go").get(0));
-			Team VP_csGo = new Team("Virtus.pro", GameRepository.findByName("Cs:Go").get(0));
-			Team G2 = new Team("G2 Esports", GameRepository.findByName("Cs:Go").get(0));
+			Team Navi = new Team("Natus Vincere", "https://navi.gg/en/", GameRepository.findByName("Cs:Go").get(0));
+			Team Liquid = new Team("Team Liquid", "https://www.teamliquid.com/", GameRepository.findByName("Cs:Go").get(0));
+			Team VP_csGo = new Team("Virtus.pro", "https://virtus.pro/en", GameRepository.findByName("Cs:Go").get(0));
+			Team G2 = new Team("G2 Esports", "https://g2esports.com/", GameRepository.findByName("Cs:Go").get(0));
 			
 			TeamRepository.save(Navi);
 			TeamRepository.save(Liquid);
 			TeamRepository.save(VP_csGo);
 			TeamRepository.save(G2);
 			
-			Team DWG = new Team("DWG KIA", GameRepository.findByName("League of Legends").get(0));
+			Team DWG = new Team("DWG KIA", "https://dwgkia.gg/", GameRepository.findByName("League of Legends").get(0));
 			
 			TeamRepository.save(DWG);
 
