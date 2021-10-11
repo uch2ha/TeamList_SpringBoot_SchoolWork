@@ -14,7 +14,7 @@ public class Game {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long gameid;
+	private long gameId;
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "game")
@@ -29,13 +29,13 @@ public class Game {
 	}
 
 
-	public long getGameid() {
-		return gameid;
+	public long getGameId() {
+		return gameId;
 	}
 
 
-	public void setGameid(long gameid) {
-		this.gameid = gameid;
+	public void setGameId(long gameId) {
+		this.gameId = gameId;
 	}
 
 
@@ -61,7 +61,7 @@ public class Game {
 	@Override
 	public String toString() {
 		// Do not insert list attribute students here! Otherwise execution of this method causes an infinite loop. 
-		return "Game [gameid=" + gameid + ", name=" + name + "]";
+		return "Game [gameId=" + gameId + ", name=" + name + "]";
 	}
 	
 	

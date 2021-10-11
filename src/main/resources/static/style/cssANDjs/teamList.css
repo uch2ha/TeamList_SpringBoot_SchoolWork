@@ -1,0 +1,138 @@
+body{
+	background-color: #cef6f1;
+}
+
+header{
+	padding: 1.5rem 0 0 2.5rem;
+	margin-bottom: 1.5rem;
+}
+
+header a{
+	border: 2px solid #39f1eb;
+	border-radius: 5px;
+	padding: 1rem;
+	color: #300e7e;
+	font-size: 1.5rem;
+	box-shadow: 0 5px 10px rgba(154, 160, 185, 0.1);
+	text-decoration: none;
+	margin-right: 1rem;
+	margin-bottom: 2rem;
+}
+
+header a:hover{
+	background-color: #8bf8ea;
+}
+
+header a:active{
+	color: #64fcd8;
+}
+
+.main{
+	padding: 0.5rem;
+	margin-top: 1rem;
+}
+
+.game-container{
+	color: #cb2da6;
+	background-color: #ffcfdf;
+	background-image: linear-gradient(315deg, #ffcfdf 0%, #b0f3f1 74%);
+	border-radius: 7px;
+	box-shadow: 0 5px 10px rgba(154, 160, 185, 0.2);
+	padding: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.game-container-header{
+	display: flex;
+}
+
+.game-container p{
+	font-size: 2.2rem;
+	margin: 0;
+}
+
+.team-container{
+	display: flex;
+	align-items: center;
+	justify-content: left;
+	overflow: auto;
+}
+
+.team-box{
+	list-style-type: none;
+	display: inline-block;
+	text-align: center;
+	justify-content: center;
+	min-width: 21vw;
+	min-height: 26vh;
+	padding: 0;
+	margin-bottom: 1rem;
+
+}
+
+.team-box-btn{
+	text-align: right;
+}
+
+.team-name{
+	font-size: 2rem;
+	color: #300e7e;
+	padding-bottom: 0.5rem;
+}
+
+.name{
+	font-size: 1.2rem;
+	color: #300e7e;
+}
+
+.nick{
+	font-size: 1.5rem;
+	color: #cb2da6;
+}
+
+.button{
+	text-decoration: none;
+	color: #dc80c3;
+	font-size: 1rem;
+	padding: 0.2rem;
+}
+
+.button:hover{
+	color: white;
+}
+
+.button:active{
+	color: #b6188f;
+	transform: translateY(2px);
+}
+
+
+
+/*Scrollbar settings*/
+/* width */
+::-webkit-scrollbar {
+	width: 11px;
+	height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px grey;
+	border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #f6a0d7;
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #e860c2;
+}
+/*Scrollbar settings*/
+
+
+
+

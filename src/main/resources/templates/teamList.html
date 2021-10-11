@@ -3,25 +3,35 @@
 <head>
 <title>hello Teams</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<link rel="stylesheet" th:href="@{style/cssANDjs/home.css}" />
+	<link rel="stylesheet" th:href="@{style/cssANDjs/teamList.css}" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 	<header>
-		<a href="/add" class="btn btn-success" >Add new team</a>
+		<a href="/addNewGame" class="btn btn-success" >Add new game</a>
+		<a href="/addNewTeam" class="btn btn-success" >Add new team</a>
 	</header>
 	<div class="main">
 			<div th:each = "game : ${games}" class="game-container">
+				<div class="game-container-header">
 				<p th:text="${game.name}"></p>
+				<a th:href="@{/deleteGame/{id}(id=${game.gameId})}" class="button"><i class="fas fa-times"></i></a>
+				</div>
 				<div class="team-container">
 					<ul th:each="team : ${game.teams}" class="team-box">
+						<div class="team-box-btn">
+							<a th:href="@{/deleteTeam/{id}(id=${team.teamId})}" class="button"><i class="far fa-trash-alt"></i></a>
+							<a th:href="@{/editTeam/{id}(id=${team.teamId})}" class="button"><i class="far fa-edit"></i></a>
+						</div>
 						<li th:text="${team.name}" class="team-name"></li>
 						<li th:each = "player : ${team.players}">
 							<small th:text="${player.firstName}" class="name"></small>
 							<small th:text="${player.nickName}" class="nick"></small>
 							<small th:text="${player.lastName}" class="name"></small>							
 						</li>
-						<li><a th:href="@{/delete/{id}(id=${team.teamid})}">Delete</a></li>
+
 					</ul>
+
 					
 				
 				</div>

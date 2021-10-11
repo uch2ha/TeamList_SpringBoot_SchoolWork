@@ -37,9 +37,7 @@ public class TeamListApplication {
 			Team VP_dota = new Team("VP", GameRepository.findByName("Dota2").get(0));
 			Team EG = new Team("Evil Geniuses", GameRepository.findByName("Dota2").get(0));
 			Team IG = new Team("Invictus Gaming", GameRepository.findByName("Dota2").get(0));
-			Team test = new Team("test", GameRepository.findByName("Dota2").get(0));
-			
-			TeamRepository.save(test);
+
 			TeamRepository.save(Secret);
 			TeamRepository.save(VP_dota);
 			TeamRepository.save(EG);

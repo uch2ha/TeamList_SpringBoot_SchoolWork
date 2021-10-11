@@ -16,14 +16,14 @@ public class Team {
 
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
-		private long teamid;
+		private long teamId;
 		private String name;
 		
 		@OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
 		private List<Player> players;
 		
 		@ManyToOne
-		@JoinColumn(name="gameid")
+		@JoinColumn(name="gameId")
 		private Game game;
 		
 		public Team() { }
@@ -35,12 +35,12 @@ public class Team {
 			this.game = game;
 		}
 
-		public long getTeamid() {
-			return teamid;
+		public long getTeamId() {
+			return teamId;
 		}
 
-		public void setTeamid(long teamid) {
-			this.teamid = teamid;
+		public void setTeamId(long teamId) {
+			this.teamId = teamId;
 		}
 
 		public String getName() {

@@ -14,11 +14,11 @@ public class Player {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private long playerId;
 	private String firstName, lastName, nickName;
 	
 	@ManyToOne
-	@JoinColumn(name="teamid")
+	@JoinColumn(name="teamId")
 	private Team team;
 	
 	public Player() { }
@@ -32,11 +32,11 @@ public class Player {
 	}
 
 	public long getId() {
-		return id;
+		return playerId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setId(long playerId) {
+		this.playerId = playerId;
 	}
 
 	public String getFirstName() {

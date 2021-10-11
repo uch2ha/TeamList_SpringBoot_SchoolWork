@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add Team</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<link rel="stylesheet" th:href="@{style/cssANDjs/add-form.css}" />
+</head>
+<body>
+	<div class="container">
+		<h2>Edit the Team</h2>
+		<div class="input-box">
+			<form th:object="${team}" action="#" th:action="@{/update/{id}(id=${team.teamId})}"  method="post">
+				<input type="text" th:field="*{name}" id="name" placeholder="Name">
+				<!--<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>-->
+				<input type="submit" value="Update User">
+			</form>
+		</div>
+	</div>
+</body>
