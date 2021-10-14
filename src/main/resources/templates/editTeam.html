@@ -9,11 +9,21 @@
 	<div class="container">
 		<h2>Edit the Team</h2>
 		<div class="input-box">
-			<form th:object="${team}" action="#" th:action="@{/update/{id}(id=${team.teamId})}"  method="post">
-				<input type="text" th:field="*{name}" id="name" placeholder="Name">
-				<!--<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>-->
-				<input type="submit" value="Update User">
+			<form th:object="${team}" th:action="@{/updateTeamInfo/{id}(id=${team.get().getTeamId()})}" action="#" method="post">
+				<input type="text" id="name" th:field="*{name}" autocomplete="off">
+				<input type="text" id="webSite" th:field="*{webSite}" autocomplete="off">
+				<input type="submit" value="Update">
 			</form>
+
 		</div>
 	</div>
 </body>
+
+
+
+<!--{id}(id=${teamId})-->
+
+
+<!-- <div th:each="player : ${team.get().getPlayers()}">
+					<input type="text" id="player.firstName" th:text="${player.firstName}" class="name">
+				</div>-->

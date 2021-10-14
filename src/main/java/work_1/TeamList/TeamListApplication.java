@@ -5,12 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import work_1.TeamList.domain.Game;
-import work_1.TeamList.domain.GameRepository;
-import work_1.TeamList.domain.Player;
-import work_1.TeamList.domain.PlayerRepository;
-import work_1.TeamList.domain.Team;
-import work_1.TeamList.domain.TeamRepository;
+import work_1.TeamList.domain.*;
 
 @SpringBootApplication
 public class TeamListApplication {
@@ -20,8 +15,18 @@ public class TeamListApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(PlayerRepository PlayerRepository, TeamRepository TeamRepository, GameRepository GameRepository) {
+	public CommandLineRunner demo(PlayerRepository PlayerRepository, TeamRepository TeamRepository, GameRepository GameRepository, UserRepository uRepository) {
 		return (args) -> {
+
+			//creating default Users
+			User user1 = new User("user", "$2a$10$TniQhWcbBQAKTGfFdmE9X.dhP6C/5HVJ1rovIHu5ijfgg45iTF5LG", "USER");
+			User user2 = new User("admin", "$2a$10$5LH7lHXmihisynx4LpDN1uyvZmhAZ6L2E4XXULdaAVmRKCQajHnYK", "ADMIN");
+
+			uRepository.save(user1);
+			uRepository.save(user2);
+
+
+
 			//creation default games -->
 			Game Dota2 = new Game("Dota2");
 			Game CsGo = new Game("Cs:Go");

@@ -1,5 +1,7 @@
 package work_1.TeamList.domain;
 
+import com.sun.istack.NotNull;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,6 +17,8 @@ public class Game {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long gameId;
+
+	@NotNull
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "game")

@@ -1,5 +1,7 @@
 package work_1.TeamList.domain;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +17,8 @@ public class Player {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long playerId;
+
+	@NotNull
 	private String firstName, lastName, nickName;
 	
 	@ManyToOne

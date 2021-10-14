@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <title>hello Teams</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
@@ -8,26 +8,33 @@
 </head>
 <body>
 	<header>
-		<a href="/addNewGame" class="btn btn-success" >Add new game</a>
-		<a href="/addNewTeam" class="btn btn-success" >Add new team</a>
+		<a href="/addNewGame" class="header-btn" >Add new game</a>
+		<a href="/addNewTeam" class="header-btn" >Add new team</a>
+		<div>
+			<p>[[${#httpServletRequest.remoteUser}]]</p>
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign out" class="header-btn"/>
+			</form>
+		</div>
 	</header>
 	<div class="main">
 			<div th:each = "game : ${games}" class="game-container">
 				<div class="game-container-header">
 				<p th:text="${game.name}"></p>
-				<a th:href="@{/deleteGame/{id}(id=${game.gameId})}" class="button"><i class="fas fa-times"></i></a>
+				<div sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/deleteGame/{id}(id=${game.gameId})}" class="button" ><i class="fas fa-times"></i></a></div>
 				</div>
 				<div class="team-container">
 					<ul th:each="team : ${game.teams}" class="team-box">
 						<div class="team-box-btn">
-							<a th:href="@{/deleteTeam/{id}(id=${team.teamId})}" class="button"><i class="far fa-trash-alt"></i></a>
-							<a th:href="@{/editTeam/{id}(id=${team.teamId})}" class="button"><i class="far fa-edit"></i></a>
+							<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deleteTeam/{id}(id=${team.teamId})}" class="button"><i class="far fa-trash-alt"></i></a>
+							<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editTeam/{id}(id=${team.teamId})}" class="button"><i class="far fa-edit"></i></a>
 						</div>
 						<a th:href="${team.webSite}" target="_blank" class="webSiteLink"><li th:text="${team.name}" class="team-name"></li></a>
 						<li th:each = "player : ${team.players}">
 							<small th:text="${player.firstName}" class="name"></small>
 							<small th:text="${player.nickName}" class="nick"></small>
-							<small th:text="${player.lastName}" class="name"></small>							
+							<small th:text="${player.lastName}" class="name"></small>
+							<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editPlayer/{id}(id=${player.getId()})}" class="button"><i class="far fa-edit"></i></a>
 						</li>
 
 					</ul>

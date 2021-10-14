@@ -3,11 +3,11 @@ package work_1.TeamList.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import work_1.TeamList.domain.*;
+
+import java.util.Optional;
 
 @Controller
 public class PlayerController {
@@ -20,6 +20,7 @@ public class PlayerController {
 	
 	@Autowired
 	private GameRepository gRepository;
+
 	
 	@RequestMapping(value = {"/teamList", "/"}, method = RequestMethod.GET)
 	public String playerList(Model model) {
@@ -46,30 +47,82 @@ public class PlayerController {
 
 	@RequestMapping(value= "/editTeam/{id}", method = RequestMethod.GET)
 	public String editTeam(@PathVariable("id") long id, Model model) {
+
 		model.addAttribute("team", tRepository.findById(id));
+		model.addAttribute("players", tRepository.findById(id).get().getPlayers());
 		//model.addAttribute("player", new Player());
-		model.addAttribute("players", pRepository.findAll());
+		//model.addAttribute("players", pRepository.findAll());
 		return "editTeam";
 	}
 
-	
-	@RequestMapping(value="/savePlayer", method = RequestMethod.POST)
-	public String savePlayer(Player player) {
-		pRepository.save(player);
-		return "redirect:/teamList";
+	@RequestMapping(value= "/editPlayer/{id}", method = RequestMethod.GET)
+	public String editPlayer(@PathVariable("id") long id, Model model) {
+
+		model.addAttribute("player", pRepository.findById(id));
+
+		return "editPlayer";
 	}
+
 	
+	/*@RequestMapping(value="/savePlayer/{id}", method = RequestMethod.POST)
+	public String savePlayer(Player newPlayer, @PathVariable Long id) {
+
+		Optional<Player> oldPlayer = pRepository.findById(id);
+		oldPlayer.get().setFirstName(newPlayer.getFirstName());
+		oldPlayer.get().setNickName(newPlayer.getNickName());
+		oldPlayer.get().setLastName(newPlayer.getLastName());
+		pRepository.save(oldPlayer.get());
+		return "redirect:/teamList";
+	}*/
+
+
+
+
 	@RequestMapping(value="/saveTeam", method = RequestMethod.POST)
 	public String saveTeam(Team team) {
 		tRepository.save(team);
 		return "redirect:/teamList";
 	}
 
-	@RequestMapping(value="/updateTeam/{id}", method = RequestMethod.POST)
-	public String updateTeam(@PathVariable("id") long id, Team team) {
-		tRepository.save(team);
+
+
+
+
+
+
+
+	@PostMapping("/updateTeamInfo/{id}")
+	public String updateTeam(Team newTeam, @PathVariable Long id) {
+
+		Optional<Team> oldTeam = tRepository.findById(id);
+		oldTeam.get().setName(newTeam.getName());
+		oldTeam.get().setWebSite(newTeam.getWebSite());
+
+		tRepository.save(oldTeam.get());
+
 		return "redirect:/teamList";
+
 	}
+
+
+	@PostMapping("/updatePlayerInfo/{id}")
+	public String updateTeam(Player newPlayer, @PathVariable Long id) {
+
+		Optional<Player> oldPlayer = pRepository.findById(id);
+		oldPlayer.get().setFirstName(newPlayer.getFirstName());
+		oldPlayer.get().setNickName(newPlayer.getNickName());
+		oldPlayer.get().setLastName(newPlayer.getLastName());
+
+		pRepository.save(oldPlayer.get());
+
+		return "redirect:/teamList";
+
+	}
+
+
+
+
+
 
 	@RequestMapping(value="/saveGame", method = RequestMethod.POST)
 	public String saveGame(Game game) {
