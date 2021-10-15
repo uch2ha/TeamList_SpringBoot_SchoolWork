@@ -1,29 +1,25 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Add Team</title>
-<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<link rel="stylesheet" th:href="@{style/cssANDjs/add-form.css}" />
+    <title>Edit Team</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/style/cssANDjs/add-form.css}"/>
 </head>
 <body>
-	<div class="container">
-		<h2>Edit the Team</h2>
-		<div class="input-box">
-			<form th:object="${team}" th:action="@{/updateTeamInfo/{id}(id=${team.get().getTeamId()})}" action="#" method="post">
-				<input type="text" id="name" th:field="*{name}" autocomplete="off">
-				<input type="text" id="webSite" th:field="*{webSite}" autocomplete="off">
-				<input type="submit" value="Update">
-			</form>
-
-		</div>
-	</div>
+<div class="container">
+    <h2>Edit the Team</h2>
+    <div class="input-box">
+        <form th:object="${team}" th:action="@{/updateTeamInfo/{id}(id=${team.get().getTeamId()})}" action="#"
+              method="post">
+            <input type="text" id="name" th:field="*{name}" autocomplete="off">
+            <input type="text" id="webSite" th:field="*{webSite}" autocomplete="off">
+            <select id="game" th:field="*{game}" class="game-select">
+                <option th:each="game: ${games}" th:value="${game.gameId}" th:text="${game.name}"></option>
+            </select>
+            <input type="submit" value="Update" class="btn">
+        </form>
+    </div>
+</div>
 </body>
 
 
-
-<!--{id}(id=${teamId})-->
-
-
-<!-- <div th:each="player : ${team.get().getPlayers()}">
-					<input type="text" id="player.firstName" th:text="${player.firstName}" class="name">
-				</div>-->

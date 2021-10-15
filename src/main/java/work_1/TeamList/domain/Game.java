@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Game {
@@ -18,7 +20,8 @@ public class Game {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long gameId;
 
-	@NotNull
+	@NotEmpty(message = "{Name may not be empty}")
+	@Size(min = 2, max = 32, message = "Name of the Game must be between 2 and 32 characters long")
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "game")

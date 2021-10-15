@@ -1,21 +1,21 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Add Team</title>
-<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<link rel="stylesheet" th:href="@{style/cssANDjs/add-form.css}" />
+    <title>Add Team</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/style/cssANDjs/add-form.css}"/>
 </head>
 <body>
-	<div class="container">
-		<h2>Add new Game</h2>
-		<div class="input-box">
-			<form th:object="${game}" th:action="@{/saveGame}" action="#" method="post">
-				<input type="text" id="name" th:field="*{name}" class="input-box" placeholder="Enter new game name" autocomplete="off">
-				<input type="submit" class="btn" value="Save"></input>
-			</form>
-		</div>
-	</div>
-	
+<div class="container">
+    <h2>Add new Game</h2>
+    <div class="input-box">
+        <form th:object="${game}" th:action="@{/saveGame}" action="#" method="post">
+            <input type="text" id="name" th:field="*{name}" class="input-box" placeholder="Enter new game name"
+                   autocomplete="off">
+            <input type="submit" class="btn" value="Save">
+        </form>
+    </div>
+</div>
+
 
 </body>
-<!--type="submit"-->

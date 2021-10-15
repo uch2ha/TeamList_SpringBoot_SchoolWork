@@ -1,100 +1,49 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-<title>hello Teams</title>
-<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-	<link rel="stylesheet" th:href="@{style/cssANDjs/teamList.css}" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>hello Teams</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{style/cssANDjs/teamList.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-	<header>
-		<a href="/addNewGame" class="header-btn" >Add new game</a>
-		<a href="/addNewTeam" class="header-btn" >Add new team</a>
-		<div>
-			<p>[[${#httpServletRequest.remoteUser}]]</p>
-			<form th:action="@{/logout}" method="post">
-				<input type="submit" value="Sign out" class="header-btn"/>
-			</form>
-		</div>
-	</header>
-	<div class="main">
-			<div th:each = "game : ${games}" class="game-container">
-				<div class="game-container-header">
-				<p th:text="${game.name}"></p>
-				<div sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/deleteGame/{id}(id=${game.gameId})}" class="button" ><i class="fas fa-times"></i></a></div>
-				</div>
-				<div class="team-container">
-					<ul th:each="team : ${game.teams}" class="team-box">
-						<div class="team-box-btn">
-							<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deleteTeam/{id}(id=${team.teamId})}" class="button"><i class="far fa-trash-alt"></i></a>
-							<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editTeam/{id}(id=${team.teamId})}" class="button"><i class="far fa-edit"></i></a>
-						</div>
-						<a th:href="${team.webSite}" target="_blank" class="webSiteLink"><li th:text="${team.name}" class="team-name"></li></a>
-						<li th:each = "player : ${team.players}">
-							<small th:text="${player.firstName}" class="name"></small>
-							<small th:text="${player.nickName}" class="nick"></small>
-							<small th:text="${player.lastName}" class="name"></small>
-							<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editPlayer/{id}(id=${player.getId()})}" class="button"><i class="far fa-edit"></i></a>
-						</li>
-
-					</ul>
-
-					
-				
-				</div>
-			</div>
-	</div>
-			<!--  
-			<th th:each = "team : ${teams}">
-				<td th:if="${team.game.name == game1.name}">
-					<p th:text=${team.name} style="font-size: 1.1rem"></p>
-					<p th:each = "player : ${team.players}">
-						<span th:text="${player.firstName}"></span>
-						<span th:text="${player.lastName}"></span>
-						<span th:text="${player.nickName}"></span>
-						<span th:text="${player.age}"></span>
-					</p>
-				</td>
-			</th>
-			</tr>
-			-->
-			<!--  
-			<tr>
-				<th>csGo</th>
-			</tr>
-			<tr th:each = "team : ${teams}">
-				<td th:if="${team.game.name == 'Cs:Go'}">
-				
-					<p th:each = "player : ${team.players}">
-						<span th:text="${player.firstName}"></span>
-					</p>
-				
-				
-				
-				</td>
-			
-			</tr>
-		-->
-	
-		<!--  
-		<tr>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Nick Name</th>
-			<th>Age</th>
-			<th>Team</th>
-		</tr>
-			<tr th:each = "player : ${players}">
-				<td th:text="${player.firstName}"></td>
-				<td th:text="${player.lastName}"></td>
-				<td th:text="${player.nickName}"></td>
-				<td th:text="${player.age}"></td>
-				<td th:text="${player.team.name}"></td>
-				<td><a th:href="@{/delete/{id}(id=${player.id})}" class="btn btn-danger">Delete</a></td>
-			</tr>
-			-->
-			
-		
-	
-
+<header>
+    <a href="/addNewGame" class="header-btn">Add new game</a>
+    <a href="/addNewTeam" class="header-btn">Add new team</a>
+    <div>
+        <p>[[${#httpServletRequest.remoteUser}]]</p>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout" class="header-btn logout-btn"/>
+        </form>
+    </div>
+</header>
+<div class="main">
+    <div th:each="game : ${games}" class="game-container">
+        <div class="game-container-header">
+            <p th:text="${game.name}"></p>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deleteGame/{id}(id=${game.gameId})}"
+               class="button"><i class="fas fa-times"></i></a>
+        </div>
+        <div class="team-container">
+            <ul th:each="team : ${game.teams}" class="team-box">
+                <div class="team-box-btn">
+                    <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deleteTeam/{id}(id=${team.teamId})}"
+                       class="button"><i class="far fa-trash-alt"></i></a>
+                    <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editTeam/{id}(id=${team.teamId})}"
+                       class="button"><i class="far fa-edit"></i></a>
+                </div>
+                <a th:href="${team.webSite}" target="_blank" class="webSiteLink">
+                    <li th:text="${team.name}" class="team-name"></li>
+                </a>
+                <li th:each="player : ${team.players}">
+                    <small th:text="${player.firstName}" class="name"></small>
+                    <small th:text="${player.nickName}" class="nick"></small>
+                    <small th:text="${player.lastName}" class="name"></small>
+                    <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editPlayer/{id}(id=${player.getId()})}"
+                       class="button"><i class="far fa-edit"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 </body>
