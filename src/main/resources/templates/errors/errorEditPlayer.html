@@ -8,8 +8,13 @@
 <body>
 <div class="container">
     <h2>Edit the Player</h2>
+    <div class="error">
+        <ul>
+            <li th:each="err : ${#fields.errors('player.*')}" th:text="${err}"/>
+        </ul>
+    </div>
     <div class="input-box">
-        <form th:object="${player}" th:action="@{/updatePlayerInfo/{id}(id=${player.get().getId()})}" action="#"
+        <form th:object="${player}" th:action="@{/updatePlayerInfo/{id}(id=${player.getId()})}" action="#"
               method="post">
             <input type="text" id="firstName" th:field="*{firstName}" autocomplete="off">
             <input type="text" id="nickName" th:field="*{nickName}" autocomplete="off">

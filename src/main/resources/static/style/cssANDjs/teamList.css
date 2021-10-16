@@ -35,7 +35,7 @@ header {
 }
 
 .logout-btn {
-    padding: 0.8rem;
+    padding: 0.7rem;
     border: 2px solid #e851c0;
     color: #e150ba;
 }
@@ -49,7 +49,7 @@ header div {
     align-items: center;
     position: absolute;
     right: 0;
-    margin-right: 2.5rem;
+    margin-right: 2rem;
 }
 
 header div p {

@@ -1,29 +1,30 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add Team</title>
+    <title>Edit Team</title>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
     <link rel="stylesheet" th:href="@{/style/cssANDjs/add-form.css}"/>
 </head>
 <body>
 <div class="container">
-    <h2>Add new Team</h2>
+    <h2>Edit the Team</h2>
     <div class="error">
         <ul>
             <li th:each="err : ${#fields.errors('team.*')}" th:text="${err}"/>
         </ul>
     </div>
     <div class="input-box">
-        <form th:object="${team}" th:action="@{/saveTeam}" action="#" method="post">
-            <input type="text" id="name" th:field="*{name}" class="input-box" placeholder="Enter new team name"
-                   autocomplete="off">
-            <input type="text" id="webSite" th:field="*{webSite}" class="input-box"
-                   placeholder="Team website https://..." autocomplete="off">
+        <form th:object="${team}" th:action="@{/updateTeamInfo/{id}(id=${teamId})}" action="#"
+              method="post">
+            <input type="text" id="name" th:field="*{name}" autocomplete="off">
+            <input type="text" id="webSite" th:field="*{webSite}" autocomplete="off">
             <select id="game" th:field="*{game}" class="game-select">
                 <option th:each="game: ${games}" th:value="${game.gameId}" th:text="${game.name}"></option>
             </select>
-            <input type="submit" class="btn" value="Save">
+            <input type="submit" value="Update" class="btn">
         </form>
     </div>
 </div>
 </body>
+
+

@@ -1,75 +1,68 @@
 package work_1.TeamList.domain;
 
-import com.sun.istack.NotNull;
-
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class Game {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long gameId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long gameId;
 
-	@NotEmpty(message = "{Name may not be empty}")
-	@Size(min = 2, max = 32, message = "Name of the Game must be between 2 and 32 characters long")
-	private String name;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "game")
-	private List<Team> teams;
-	
-	public Game() { }
-	
+    @NotEmpty(message = "Name may not be empty")
+    @Size(min = 2, max = 32, message = "Name of the Game must be between 2 and 32 characters long")
+    private String name;
 
-	public Game(String name) {
-		super();
-		this.name = name;
-	}
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "game")
+    private List<Team> teams;
+
+    public Game() {
+    }
 
 
-	public long getGameId() {
-		return gameId;
-	}
+    public Game(String name) {
+        super();
+        this.name = name;
+    }
 
 
-	public void setGameId(long gameId) {
-		this.gameId = gameId;
-	}
+    public long getGameId() {
+        return gameId;
+    }
 
 
-	public String getName() {
-		return name;
-	}
+    public void setGameId(long gameId) {
+        this.gameId = gameId;
+    }
 
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
 
-	public List<Team> getTeams() {
-		return teams;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
 
-	public void setTeams(List<Team> teams) {
-		this.teams = teams;
-	}
-	
-	@Override
-	public String toString() {
-		// Do not insert list attribute students here! Otherwise execution of this method causes an infinite loop. 
-		return "Game [gameId=" + gameId + ", name=" + name + "]";
-	}
-	
-	
+    public List<Team> getTeams() {
+        return teams;
+    }
+
+
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
+    }
+
+    @Override
+    public String toString() {
+        // Do not insert list attribute students here! Otherwise execution of this method causes an infinite loop.
+        return "Game [gameId=" + gameId + ", name=" + name + "]";
+    }
+
+
 }

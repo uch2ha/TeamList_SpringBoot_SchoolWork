@@ -2,88 +2,84 @@ package work_1.TeamList.domain;
 
 import com.sun.istack.NotNull;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Team {
 
-		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO)
-		private long teamId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long teamId;
 
-		@NotNull
-		private String name;
+    @NotEmpty(message = "Team name may not be empty")
+    @Size(min = 2, max = 32, message = "Team name must be between 2 and 32 characters long")
+    private String name;
 
-		@NotNull
-		private String webSite;
-		
-		@OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
-		private List<Player> players;
-		
-		@ManyToOne
-		@JoinColumn(name="gameId")
-		private Game game;
-		
-		public Team() { }
-		
+    @NotNull
+    private String webSite;
 
-		public Team(String name,String webSite, Game game) {
-			super();
-			this.webSite = webSite;
-			this.name = name;
-			this.game = game;
-		}
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
+    private List<Player> players;
 
-		public long getTeamId() {
-			return teamId;
-		}
+    @ManyToOne
+    @JoinColumn(name = "gameId")
+    private Game game;
 
-		public void setTeamId(long teamId) {
-			this.teamId = teamId;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
+    public Team() {
+    }
 
 
-		public List<Player> getPlayers() {
-			return players;
-		}
+    public Team(String name, String webSite, Game game) {
+        super();
+        this.webSite = webSite;
+        this.name = name;
+        this.game = game;
+    }
+
+    public long getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(long teamId) {
+        this.teamId = teamId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
 
-		public void setPlayers(List<Player> players) {
-			this.players = players;
-		}
+    public List<Player> getPlayers() {
+        return players;
+    }
 
 
-		public Game getGame() {
-			return game;
-		}
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
 
 
-		public void setGame(Game game) {
-			this.game = game;
-		}
+    public Game getGame() {
+        return game;
+    }
 
-		public String getWebSite() {
-			return webSite;
-		}
 
-		public void setWebSite(String webSite) {
-			this.webSite = webSite;
-		}
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public String getWebSite() {
+        return webSite;
+    }
+
+    public void setWebSite(String webSite) {
+        this.webSite = webSite;
+    }
 }

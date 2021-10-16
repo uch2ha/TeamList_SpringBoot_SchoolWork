@@ -1,81 +1,76 @@
 package work_1.TeamList.domain;
 
-import com.sun.istack.NotNull;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 
 @Entity
 public class Player {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long playerId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long playerId;
 
-	@NotNull
-	private String firstName, lastName, nickName;
-	
-	@ManyToOne
-	@JoinColumn(name="teamId")
-	private Team team;
-	
-	public Player() { }
+    @NotEmpty(message = "Values may not be empty")
+    @Size(min = 2, max = 32, message = "All values must be between 2 and 32 characters long")
+    private String firstName, lastName, nickName;
 
-	public Player(String firstName, String lastName, String nickName, Team team) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.nickName = nickName;
-		this.team = team;
-	}
+    @ManyToOne
+    @JoinColumn(name = "teamId")
+    private Team team;
 
-	public long getId() {
-		return playerId;
-	}
+    public Player() {
+    }
 
-	public void setId(long playerId) {
-		this.playerId = playerId;
-	}
+    public Player(String firstName, String lastName, String nickName, Team team) {
+        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nickName = nickName;
+        this.team = team;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public long getId() {
+        return playerId;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setId(long playerId) {
+        this.playerId = playerId;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getNickName() {
-		return nickName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
 
 
-	public Team getTeam() {
-		return team;
-	}
+    public Team getTeam() {
+        return team;
+    }
 
-	public void setTeam(Team team) {
-		this.team = team;
-	}
-	
-	
-	
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+
 }

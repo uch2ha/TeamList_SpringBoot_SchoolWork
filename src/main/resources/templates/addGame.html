@@ -1,13 +1,18 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add Team</title>
+    <title>Add Game</title>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
     <link rel="stylesheet" th:href="@{/style/cssANDjs/add-form.css}"/>
 </head>
 <body>
 <div class="container">
     <h2>Add new Game</h2>
+    <div class="error">
+        <ul>
+            <li th:each="err : ${#fields.errors('game.*')}" th:text="${err}"/>
+        </ul>
+    </div>
     <div class="input-box">
         <form th:object="${game}" th:action="@{/saveGame}" action="#" method="post">
             <input type="text" id="name" th:field="*{name}" class="input-box" placeholder="Enter new game name"
@@ -16,6 +21,4 @@
         </form>
     </div>
 </div>
-
-
 </body>
