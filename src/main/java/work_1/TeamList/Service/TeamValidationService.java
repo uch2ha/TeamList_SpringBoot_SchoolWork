@@ -7,7 +7,7 @@ import work_1.TeamList.domain.Team;
 public class TeamValidationService {
     static public String validateTeam(Team team) {
         String message = "";
-        if (team.getWebSite() != null) {
+        if (!team.getWebSite().equals("")) {
             if (!team.getWebSite().startsWith("https://")) {
                 message = "Website should start from https://";
             }

@@ -8,7 +8,9 @@ header {
     display: flex;
     align-items: center;
     justify-content: left;
+    min-height: 4rem;
 }
+
 
 .header-btn {
     border: 2px solid #39f1eb;
@@ -44,7 +46,7 @@ header {
     background-color: #da60ba;
 }
 
-header div {
+.logInfo {
     display: flex;
     align-items: center;
     position: absolute;
@@ -52,7 +54,7 @@ header div {
     margin-right: 2rem;
 }
 
-header div p {
+.logInfo p {
     font-size: 2rem;
     padding-right: 2rem;
     color: #e150ba;
@@ -73,6 +75,7 @@ header div p {
     box-shadow: 0 5px 10px rgba(154, 160, 185, 0.2);
     padding: 1rem;
     margin-bottom: 1.5rem;
+    
 }
 
 .game-container-header {

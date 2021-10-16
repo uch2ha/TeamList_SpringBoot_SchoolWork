@@ -8,9 +8,11 @@
 </head>
 <body>
 <header>
-    <a href="/addNewGame" class="header-btn">Add new game</a>
-    <a href="/addNewTeam" class="header-btn">Add new team</a>
-    <div>
+    <div sec:authorize="hasAuthority('ADMIN')">
+        <a href="/addNewGame" class="header-btn">Add new game</a>
+        <a href="/addNewTeam" class="header-btn">Add new team</a>
+    </div>
+    <div class="logInfo">
         <p>[[${#httpServletRequest.remoteUser}]]</p>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Logout" class="header-btn logout-btn"/>
@@ -32,13 +34,27 @@
                     <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editTeam/{id}(id=${team.teamId})}"
                        class="button"><i class="far fa-edit"></i></a>
                 </div>
-                <a th:href="${team.webSite}" target="_blank" class="webSiteLink">
+                <!-- checking if the team has a website -->
+                <div th:if="${team.getWebSite() != ''}">
+                    <a th:href="${team.webSite}" target="_blank" class="webSiteLink">
+                        <li th:text="${team.name}" class="team-name"></li>
+                    </a>
+                </div>
+                <div th:if="${team.webSite == ''}">
                     <li th:text="${team.name}" class="team-name"></li>
-                </a>
+                </div>
+
+                <div th:if="${team.players.size() < 5}">
+                    <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/addNewPlayer/{id}(id=${team.teamId})}"
+                       class="button"><i class="far fa-plus-square"></i>
+                    </a>
+                </div>
                 <li th:each="player : ${team.players}">
                     <small th:text="${player.firstName}" class="name"></small>
                     <small th:text="${player.nickName}" class="nick"></small>
                     <small th:text="${player.lastName}" class="name"></small>
+                    <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deletePlayer/{id}(id=${player.getId()})}"
+                       class="button"><i class="far fa-trash-alt"></i></a>
                     <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editPlayer/{id}(id=${player.getId()})}"
                        class="button"><i class="far fa-edit"></i></a>
                 </li>

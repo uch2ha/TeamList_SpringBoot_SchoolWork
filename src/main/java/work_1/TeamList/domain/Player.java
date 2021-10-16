@@ -12,10 +12,19 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long playerId;
 
-    @NotEmpty(message = "Values may not be empty")
-    @Size(min = 2, max = 32, message = "All values must be between 2 and 32 characters long")
-    private String firstName, lastName, nickName;
+    @NotEmpty(message = "First name may not be empty")
+    @Size(min = 2, max = 32, message = "First name must be between 2 and 32 characters long")
+    private String firstName;
 
+    @NotEmpty(message = "Last name may not be empty")
+    @Size(min = 2, max = 32, message = "Last name must be between 2 and 32 characters long")
+    private String lastName;
+
+    @NotEmpty(message = "Nick name may not be empty")
+    @Size(min = 2, max = 32, message = "Nick name must be between 2 and 32 characters long")
+    private String nickName;
+
+    
     @ManyToOne
     @JoinColumn(name = "teamId")
     private Team team;

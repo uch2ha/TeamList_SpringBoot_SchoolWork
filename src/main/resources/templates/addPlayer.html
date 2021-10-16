@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Player</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/style/cssANDjs/add-form.css}"/>
+</head>
+<body>
+<div class="container">
+    <h2>Add new Player</h2>
+    <div class="error">
+        <ul>
+            <li th:each="err : ${#fields.errors('player.*')}" th:text="${err}"/>
+        </ul>
+    </div>
+    <div class="input-box">
+        <form th:object="${player}" th:action="@{/savePlayer/{id}(id=${teamId})}" action="#" method="post">
+            <input type="text" id="firstName" th:field="*{firstName}" class="input-box" placeholder="Enter name"
+                   autocomplete="off">
+            <input type="text" id="nickName" th:field="*{nickName}" class="input-box"
+                   placeholder="Enter nick name" autocomplete="off">
+            <input type="text" id="lastName" th:field="*{lastName}" class="input-box" placeholder="Enter last name"
+                   autocomplete="off">
+            <input type="submit" class="btn" value="Save">
+        </form>
+    </div>
+</div>
+</body>

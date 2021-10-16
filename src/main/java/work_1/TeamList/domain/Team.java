@@ -1,7 +1,5 @@
 package work_1.TeamList.domain;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -17,8 +15,7 @@ public class Team {
     @NotEmpty(message = "Team name may not be empty")
     @Size(min = 2, max = 32, message = "Team name must be between 2 and 32 characters long")
     private String name;
-
-    @NotNull
+    
     private String webSite;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
