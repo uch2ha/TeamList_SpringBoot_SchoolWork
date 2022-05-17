@@ -1,12 +1,26 @@
 # TeamList
 My school work "TeamList" 
 
-userName: admin
-password: admin
+Herokuapp_link:
 
-userName: user
-password: user
+    https://thawing-lake-97175.herokuapp.com/login?logout
+
+Admin userName/password:
+
+    admin
+
+
+User userName/password:
+
+    user
 
 
 User
-    test
+
+    read only
+    
+Admin
+
+    add/remove/edit Games
+    add/remove/edit teams
+    add/remove/edit players
